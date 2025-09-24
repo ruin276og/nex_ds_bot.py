@@ -1,19 +1,6 @@
 /**
  * Minecraft Server Status Bot - Command Deployment (Extended Moderation + Utility)
- * Created by Team BLK (extended)
- *
- * This file registers a large set of slash commands for moderation and server management:
- * - ban, tempban, unban, kick, softban
- * - mute, unmute, tempmute
- * - warn, warnings (view/clear)
- * - purge, lockdown, slowmode
- * - role add/remove, nick
- * - announce, modlog set
- * - utility: status, ping, serverinfo, userinfo, help
- *
- * Notes:
- * - Some commands reference channels, roles or users and require the bot to have appropriate permissions.
- * - Temporary actions (tempban/tempmute) require persistence (DB or JSON) and a separate scheduler to unban/unmute.
+ * Using Guild Commands for instant updates.
  */
 
 const { REST, Routes } = require('discord.js');
@@ -105,15 +92,16 @@ const rest = new REST({ version: '10' }).setToken(config.bot.token);
 
 (async () => {
   try {
-    console.log('Started refreshing application (/) commands.');
+    console.log('Started refreshing GUILD application (/) commands.');
 
     await rest.put(
-      Routes.applicationCommands(config.bot.clientId),
+      Routes.applicationGuildCommands(config.bot.clientId, config.bot.guildId),
       { body: commands }
     );
 
-    console.log('Successfully reloaded application (/) commands.');
+    console.log('Successfully reloaded guild (/) commands.');
   } catch (error) {
     console.error(error);
   }
 })();
+
