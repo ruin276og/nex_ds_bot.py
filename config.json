@@ -1,7 +1,7 @@
 {
-  "token": "MTM3ODM3MTczMDIwNDAwNDQwNA.G9r31h.Xl_WUjr_kOIn7K50k5JuspotQTACZA2CO9OIz8",
-  "clientId": "1378371730204004404",
-  "guildId": "1359975713213775913",
+  "token": "YOUR_BOT_TOKEN",
+  "clientId": "YOUR_BOT_CLIENT_ID",
+  "guildId": "YOUR_SERVER_ID",
   "bot": {
     "presence": {
       "status": "online",
